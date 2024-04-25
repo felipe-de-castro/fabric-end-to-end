@@ -71,6 +71,10 @@ After all setup, building the semanatic model you can follow the steps:
 3. Next step:  go to "New semantic Model" (see the image below)
 ![image](/imagens/semantic_model.png)
 4. Create manage the relations between the tables.
-5. ![image](/imagens/semantic_model_connecting.png)
+  ![image](/imagens/semantic_model_connecting.png)
 ## Creating Auto Generated Report from Semantic Model
+When creating the relations are done, in your workspace select the **semantic model** created.
+- click on "Explore this data" > 'Auto-create a report' (for generating reports automatically)
+  ![image](/imagens/auto_create_report.png)
+  
 ## Connecting to Semantic Model Using Power BI Desktop in Direct Lake and Direct Query Mode
