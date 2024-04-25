@@ -42,7 +42,24 @@ After the files been updated and the data used to bulding the models, we will mo
 [Notebook to mount and Archive files](notebooks/Archives.ipynb)
 
 ##  Running all notebook in Data Factory.
-## Creating Data Pipeline to run Final Notebook
+In the original version, a notebook with mssparkutils.notebook.run() code to run all the notebooks is created and managed to run with Data Factory Pipeline.
+
+His code:
+```python
+if check_files:
+ mssparkutils.notebook.run("Bronze_Sales")
+ mssparkutils.notebook.run("Gold Customer")
+ mssparkutils.notebook.run("Gold_Product")
+ mssparkutils.notebook.run("Gold_ShipMode")
+ mssparkutils.notebook.run("Gold_OrderPriority")
+ mssparkutils.notebook.run("Gold_Order Return")
+ mssparkutils.notebook.run("Gold_Fact_Sale")
+ mssparkutils.notebook.run("Archive_Files") 
+```
+:bulb: I had an issue of not knowing if all those run notebooks would succeed or fail while running or if one fail, the ohter would still run.
+Using the Data Factory brought me the feeling of security that if on fails, it would stop running.
+![image](/imagens/pipeline_notebooks.png)
+
 ## Creating Semantic Model and Creating Auto Generated Report
 ## Creating Auto Generated Report from Semantic Model
 ## Connecting to Semantic Model Using Power BI Desktop in Direct Lake and Direct Query Mode
