@@ -36,8 +36,9 @@ Utilizing notebook in pyspark was done the ingestion from the .xlsx files in 'fi
 7. Loading Ship Mode Dimension - Gold Layer [notebook link](notebooks/gold_shipmode.ipynb)
 
 ##  Mounting to Lakehouse and Archiving Files
-In this part, using [mssparkutils](https://learn.microsoft.com/en-us/azure/synapse-analytics/spark/microsoft-spark-utilities?pivots=programming-language-python) you will be able to work with file systems, such as copie files, move them, list a directory etc. <br>
-After the files been updated and the data used to bulding the models, we will mount the enviroment file system so the files can be moved to a 'Archives' folder (created earlier).
+In this part, using [mssparkutils](https://learn.microsoft.com/en-us/azure/synapse-analytics/spark/microsoft-spark-utilities?pivots=programming-language-python) you will be able to work with file systems, such as copie files, move them, list directory etc. <br>
+
+After the files (.xlsx) been used, tables created to bulding the models with all data insertions, in the [Archive notebook](notebooks/Archives.ipynb) will be mounted the enviroment for the file system so the files so they can be moved to a 'Archives' folder (created earlier).
 
 [Notebook to mount and Archive files](notebooks/Archives.ipynb)
 
@@ -56,10 +57,20 @@ if check_files:
  mssparkutils.notebook.run("Gold_Fact_Sale")
  mssparkutils.notebook.run("Archive_Files") 
 ```
-:bulb: I had an issue of not knowing if all those run notebooks would succeed or fail while running or if one fail, the ohter would still run.
+:bulb: I had an issue of not knowing if all those notebooks would succeed or fail while running or if one fails the other would still run.
 Using the Data Factory brought me the feeling of security that if on fails, it would stop running.
+The notebooks were connected as "on success"
 ![image](/imagens/pipeline_notebooks.png)
 
+- The last notebook (Archives) will move files from 'Current' folder to 'Archives' folder after all notebook run successfully.
+
 ## Creating Semantic Model and Creating Auto Generated Report
+After all setup, building the semanatic model you can follow the steps:
+1. Go to workspace;
+2. Select the Lakehouse ( in the list of the files, on the column 'TYPE' you will find.
+3. Next step:  go to "New semantic Model" (see the image below)
+![image](/imagens/semantic_model.png)
+4. Create manage the relations between the tables.
+5. ![image](/imagens/semantic_model_connecting.png)
 ## Creating Auto Generated Report from Semantic Model
 ## Connecting to Semantic Model Using Power BI Desktop in Direct Lake and Direct Query Mode
